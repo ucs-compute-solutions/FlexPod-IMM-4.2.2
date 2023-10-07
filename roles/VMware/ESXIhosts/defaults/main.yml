@@ -1,0 +1,24 @@
+# Variables for ESXi Configuration
+# Adjust the variable values as per your requirements
+#
+# Uplinks to be used by various Switch Configurations
+mgmt_uplink1: "vmnic0"
+mgmt_uplink2: "vmnic1"
+#
+# NFS Datastore Type: set to nfs or nfs41 for how NFS datastores get mounted
+nfs_datastore_type: "nfs41"
+#
+# Variables for ESXi driver installation/update
+#
+nenic_offline_bundle_url: "http://10.102.1.150/software/UCS/Cisco-nenic_1.0.42.0-1OEM.670.0.0.8169922-19715481/Cisco-nenic_1.0.42.0-1OEM.670.0.0.8169922-offline_bundle-19715481.zip"
+nenic_filename: "Cisco-nenic_1.0.42.0-1OEM.670.0.0.8169922-offline_bundle-19715481.zip"
+nenic_ens_offline_bundle_url: "http://10.102.1.150/software/UCS/Cisco-nenic-ens_1.0.6.0-1OEM.700.1.0.15843807_20076970-package/Cisco-nenic-ens_1.0.6.0-1OEM.700.1.0.15843807_20076970.zip"
+nenic_ens_filename: "Cisco-nenic-ens_1.0.6.0-1OEM.700.1.0.15843807_20076970.zip"
+nfnic_offline_bundle_url: "http://10.102.1.150/software/UCS/Cisco-nfnic_5.0.0.34-1OEM.700.1.0.15843807_19966277-package/Cisco-nfnic_5.0.0.34-1OEM.700.1.0.15843807_19966277.zip"
+nfnic_filename: "Cisco-nfnic_5.0.0.34-1OEM.700.1.0.15843807_19966277.zip"
+lsi_mr3_offline_bundle_url: "http://10.102.1.150/software/UCS/Broadcom-lsi-mr3_7.720.04.00-1OEM.700.1.0.15843807_19476191-package/Broadcom-lsi-mr3_7.720.04.00-1OEM.700.1.0.15843807_19476191.zip"
+lsi_mr3_filename: "Broadcom-lsi-mr3_7.720.04.00-1OEM.700.1.0.15843807_19476191.zip"
+NetAppVAAI_offline_bundle_url: "http://10.102.1.150/software/NetApp/NetAppNasPluginV2.0.zip"
+NetAppVAAI_filename: "NetAppNasPluginV2.0.zip"
+#UCS_Tools_url: "http://10.1.156.150/software/UCS/ucs-tool-esxi_1.2.1-1OEM.zip"
+#UCS_Tools_filename: "ucs-tool-esxi_1.2.1-1OEM.zip"

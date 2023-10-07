@@ -1,0 +1,37 @@
+---
+vpc_source: "{{ hostvars['n9kB'].ansible_host }}"
+vpc_destination: 10.102.0.3 # "{{ hostvars['n9kA'].ansible_host }}"
+vpc_role_priority: "20"
+# NTP Distribution IP for N9K-B in the IB-MGMT VLAN
+IB_MGMT_ntp_dist_IP: "{{ ib_mgmt_ntp_servers[1].ip_address }}{{ ntp_distribution_nm_cidr }}"
+# Interface Lists; more interfaces can be added for additional BW
+#
+uplink_interface_list:
+  - interface: "Ethernet1/47"
+    description: "AA05-93180YC-Core-1:Eth1/44"
+  - interface: "Ethernet1/48"
+    description: "AA05-93180YC-Core-2:Eth1/44"
+
+peerlink_interface_list:
+  - interface:  "Ethernet1/101"
+    description: "AA02-93360-A:Eth1/101"
+  - interface:  "Ethernet1/102"
+    description: "AA02-93360-A:Eth1/102"
+#
+FI_A_interface_list:
+  - interface:  "Ethernet1/97"
+    description: "AA02-6536-A:Eth1/32"
+#
+FI_B_interface_list:
+  - interface:  "Ethernet1/98"
+    description: "AA02-6536-B:Eth1/32"
+#
+storage_A_interface_list:
+  - interface:  "Ethernet1/99"
+    description: "AA02-A800-01:e5b"
+#
+storage_B_interface_list:
+  - interface:  "Ethernet1/100"
+    description: "AA02-A800-02:e5b"
+#
+all_interfaces: "{{ uplink_interface_list + peerlink_interface_list + FI_A_interface_list + FI_B_interface_list + storage_A_interface_list + storage_B_interface_list }}"

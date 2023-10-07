@@ -1,0 +1,80 @@
+---
+backup_dir: "~/"
+#
+enabled_features:
+  - lacp
+  - vpc
+  - interface-vlan
+  - nxapi
+  - udld
+  - lldp
+#
+global_settings:
+  - spanning-tree port type network default
+  - spanning-tree port type edge bpduguard default
+  - spanning-tree port type edge bpdufilter default
+  - port-channel load-balance src-dst l4port
+  - system default switchport
+  - system default switchport shutdown
+#
+global_NTP_servers:
+  - 172.20.10.11
+  - 172.20.10.12
+ntp_distribution_vlan: "{{ ib_vlan_id }}" # VLAN (IB-MGMT) where NTP distribution interfaces will be placed.
+ntp_distribution_nm_cidr: "/24"
+ntp_distribution_gw: '10.102.1.254' # Default gateway for IB-MGMT NTP distribution interfaces.
+#
+uplink_PC:
+  - interface: "port-channel102"
+    # id must be same as port-channel number
+    id: "102"
+    speed: "auto"
+    duplex: "auto"
+    description: "AA02-Uplink"
+#
+peerlink_PC:
+  - interface: "port-channel10"
+    # id must be same as port-channel number
+    id: "10"
+    speed: "auto"
+    duplex: "auto"
+    description: "vPC Peer Link"
+#
+FI_A_PC:
+  - interface: "port-channel197"
+    # id must be same as port-channel number
+    id: "197"
+    speed: "auto"
+    duplex: "auto"
+    description: "AA02-6536-A"
+#
+FI_B_PC:
+  - interface: "port-channel198"
+    # id must be same as port-channel number
+    id: "198"
+    speed: "auto"
+    duplex: "auto"
+    description: "AA02-6536-B"
+#
+storage_A_PC:
+  - interface: "port-channel199"
+    # id must be same as port-channel number
+    id: "199"
+    speed: "auto"
+    duplex: "auto"
+    description: "AA02-A800-01"
+#
+storage_B_PC:
+  - interface: "port-channel1100"
+    # id must be same as port-channel number
+    id: "1100"
+    speed: "auto"
+    duplex: "auto"
+    description: "AA02-A800-02"
+#
+all_port_channels: "{{ peerlink_PC + uplink_PC + FI_A_PC + FI_B_PC + storage_A_PC + storage_B_PC }}"
+#
+# VPC Parameters
+#
+vpc_domain_id: "10"
+#
